@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial; font-size: 12px; margin: 0; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .logo { max-height: 80px; }
+        .title { font-size: 24px; font-weight: bold; color: #ec5f2a; }
+        .section { margin-top: 20px; }
+        .addresses { display: flex; justify-content: space-between; }
+        .items table { width: 100%; border-collapse: collapse; margin-top: 20px; page-break-inside: auto; }
+        .items th, .items td { border: 1px solid #ccc; padding: 6px; text-align: left; }
+        .items thead { background-color: #f08833; color: #fff; }
+        .summary { margin-top: 20px; page-break-inside: avoid; }
+        .summary table { width: 100%; }
+        .summary td { text-align: right; padding: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        
+        <div class="logo-container">
+  {{logoImageHtml}}
+</div>
+
+        <div class="title">Inooga Solutions</div>
+    </div>
+
+    <div class="section addresses">
+        <div>
+            <strong>Business Address</strong><br />
+            {{businessAddress.street}}<br />
+            {{businessAddress.city}}, {{businessAddress.state}} - {{businessAddress.zip}}<br />
+            {{businessAddress.country}}<br />
+            Phone: {{businessAddress.phone}}<br />
+            Email: {{businessAddress.email}}
+        </div>
+        <div>
+            <strong>Delivery Address</strong><br />
+            {{deliveryAddress.name}}<br />
+            {{deliveryAddress.street}}<br />
+            {{deliveryAddress.city}}, {{deliveryAddress.state}} - {{deliveryAddress.zip}}<br />
+            {{deliveryAddress.country}}<br />
+            Phone: {{deliveryAddress.phone}}<br />
+            Email: {{deliveryAddress.email}}
+        </div>
+    </div>
+
+    <div class="section items">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Description</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each items}}
+                <tr>
+                    <td>{{index}}</td>
+                    <td>{{description}}</td>
+                    <td>{{quantity}}</td>
+                    <td>{{unitPrice}}</td>
+                    <td>{{totalPrice}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="summary">
+        <table>
+            <tr><td>Subtotal:</td><td>{{subtotal}}</td></tr>
+            <tr><td>Tax ({{taxRate}}%):</td><td>{{taxAmount}}</td></tr>
+            <tr><td><strong>Grand Total:</strong></td><td><strong>{{grandTotal}}</strong></td></tr>
+        </table>
+    </div>
+</body>
+</html>
